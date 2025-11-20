@@ -8,23 +8,23 @@ import jakarta.persistence.Table;
 public class Content extends Lesson {
 
     private String textContent;
-    private String imgUri;
+    private String videoUri;
 
     public Content() {
     }
 
-    public Content(Long id, String title, Integer position, Section section, String imgUri, String textContent) {
+    public Content(Long id, String title, Integer position, Section section, String videoUri, String textContent) {
         super(id, title, position, section);
-        this.imgUri = imgUri;
+        this.videoUri = videoUri;
         this.textContent = textContent;
     }
 
     public String getImgUri() {
-        return imgUri;
+        return videoUri;
     }
 
-    public void setImgUri(String imgUri) {
-        this.imgUri = imgUri;
+    public void setImgUri(String videoUri) {
+        this.videoUri = videoUri;
     }
 
     public String getTextContent() {
