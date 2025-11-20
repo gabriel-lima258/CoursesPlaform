@@ -4,7 +4,9 @@ import com.gtech.course.entities.pk.EnrollmentPK;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,6 +22,9 @@ public class Enrollment {
     private Instant refundMoment;
     private boolean available;
     private boolean onlyUpdate;
+
+    @OneToMany(mappedBy = "enrollment")
+    private List<Deliver> delivers = new ArrayList<>();
 
     @ManyToMany(mappedBy = "enrollmentsDone")
     Set<Lesson> lessonsDone = new HashSet<>();
@@ -82,5 +87,9 @@ public class Enrollment {
 
     public void setOnlyUpdate(boolean onlyUpdate) {
         this.onlyUpdate = onlyUpdate;
+    }
+
+    public List<Deliver> getDelivers() {
+        return delivers;
     }
 }
