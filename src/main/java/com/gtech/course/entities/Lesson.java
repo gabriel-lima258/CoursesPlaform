@@ -2,9 +2,7 @@ package com.gtech.course.entities;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 // classe abstrata que não pode ser instanciada, só as classes heranças
@@ -34,6 +32,9 @@ public abstract class Lesson {
                 @JoinColumn(name = "offer_id")
             })
     Set<Enrollment> enrollmentsDone = new HashSet<>();
+
+    @OneToMany(mappedBy = "lesson")
+    List<Deliver> delivers = new ArrayList<>();
 
     public Lesson() {
     }
@@ -79,6 +80,10 @@ public abstract class Lesson {
 
     public Set<Enrollment> getEnrollmentsDone() {
         return enrollmentsDone;
+    }
+
+    public List<Deliver> getDelivers() {
+        return delivers;
     }
 
     @Override
